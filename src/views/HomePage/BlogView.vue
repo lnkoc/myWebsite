@@ -72,29 +72,66 @@ async function showList() {
 </script>
 
 <template>
-  <h1>Blog</h1>
   <main v-if="!showArticle">
     <ul>
       <li v-for="item in introArticlesList" :key="item.ARTICLE_ID" ref="items">
-        <h2 v-html="item.TITLE"></h2>
-        <em>Autor: {{ item.LOGIN }}</em>
-        Dodano: {{ item.dateAndTime }}<br />
-        <img :src="`/uploads/${item.IMAGE_NAME}`" /><br />
-        <strong v-html="item.INTRO"></strong>
-        <br />
-        <button @click="openArticle(item.ARTICLE_ID)">Czytaj całość</button><br />
+        <section class="introArticle flex">
+          <h1 v-html="item.TITLE" class="heading--1 u-mt-30 u-mb-30 u-ml-30 u-mr-30"></h1>
+          <p class="u-mb-10">
+            <em>Autor: {{ item.LOGIN }}</em>
+            Dodano: {{ item.dateAndTime }} <br />
+          </p>
+          <img :src="`/uploads/${item.IMAGE_NAME}`" /><br />
+          <p class="intro u-mt-10 u-mb-20 u-ml-30 u-mr-30">
+            <strong v-html="item.INTRO"></strong>
+            <br />
+          </p>
+          <button class="btn" @click="openArticle(item.ARTICLE_ID)">Czytaj całość</button><br />
+        </section>
       </li>
     </ul>
-    <button :disabled="articlesLoaderBtn" @click="getMoreIntroArticles(3)">
+    <button :disabled="articlesLoaderBtn" class="btn btn-loader" @click="getMoreIntroArticles(3)">
       {{ articlesLoaderNote }}
     </button>
   </main>
   <ArticleView v-if="showArticle" :articleId="openArticleId" @closeArticle="showList()" />
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+.introArticle {
+  background-color: $secondary-color;
+  margin: 40px 40px;
+  border-radius: $border-radius;
+  flex-direction: column;
+
+  & .btn {
+    color: $secondary-color;
+    font-weight: $font-weight-bold;
+  }
+
+  & .intro {
+    font-size: $font-size-4;
+  }
+}
+
+.btn-loader {
+  width: 80%;
+  align-self: center;
+  color: $secondary-color;
+  font-weight: $font-weight-bold;
+  display: block;
+  margin: 40px auto;
+
+  &:disabled {
+    background-color: $secondary-color;
+    color: $primary-color;
+  }
+}
+
 img {
-  width: 384px;
+  min-width: 384px;
+  max-height: 560px;
+  // float: left;
 }
 ul {
   list-style-type: none;

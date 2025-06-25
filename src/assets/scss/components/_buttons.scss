@@ -1,0 +1,50 @@
+.btn {
+  background-color: $primary-button-color;
+  color: $primary-color;
+  padding: 20px 25px;
+  display: inline-block;
+  cursor: pointer;
+  border: 2px solid transparent;
+  text-align: center;
+  font-size: $font-size-5;
+  font-weight: $font-weight-light;
+  border-radius: $border-radius;
+  margin: 5px 0;
+  transition:
+    background-color 0.2s ease-in-out,
+    border 0.2s ease-in-out,
+    0.2s ease-in-out;
+
+  &:hover {
+    color: $secondary-color;
+    background-color: $primary-color;
+    border-color: $primary-button-color;
+  }
+
+  &--small {
+    padding: 12px 25px;
+  }
+}
+
+.hamburger {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  svg,
+  path {
+    stroke: $primary-color;
+    fill: $primary-color;
+  }
+
+  &:hover {
+    svg,
+    path {
+      stroke: $secondary-color;
+      fill: $primary-color;
+    }
+  }
+
+  @include medium-up {
+    display: none;
+  }
+}

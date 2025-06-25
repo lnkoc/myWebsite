@@ -1,0 +1,42 @@
+.heading {
+  font-weight: bold;
+  margin: 15px 0;
+
+  &--1 {
+    font-size: 40px;
+
+    @include large-up {
+      font-size: $font-size-1;
+    }
+  }
+
+  &--2 {
+    font-size: $font-size-3;
+
+    @include large-up {
+      font-size: $font-size-2;
+    }
+  }
+
+  &--3 {
+    font-size: $font-size-4;
+
+    @include large-up {
+      font-size: $font-size-3;
+    }
+  }
+}
+
+.label {
+  display: block;
+  margin-bottom: 15px;
+  font-size: $font-size-4;
+  color: $gray-dark;
+  font-weight: $font-weight-bold;
+  line-height: 36px;
+  text-align: center;
+
+  @include medium-up {
+    text-align: start;
+  }
+}
