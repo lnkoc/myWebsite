@@ -41,31 +41,73 @@ function sendComment() {
 }
 </script>
 <template>
-  <h2>Komentarze:</h2>
+  <h3 class="heading--3">Komentarze</h3>
   <section>
     <template v-for="item in comments" :key="item.COMMENT_ID">
-      Data dodania:
-      <em>{{ item.dateAndTime }}</em> <br />
-      Dodał:
-      <strong v-html="item.AUTHOR"></strong> <br />
-      <span v-html="item.CONTENT"></span>
       <br />
+      <p class="comment-credentials">
+        <span class="author">Dodał(a) <strong v-html="item.AUTHOR"></strong></span
+        ><span class="date"
+          >Data dodania: <em>{{ item.dateAndTime }}</em> </span
+        ><br />
+      </p>
+      <p class="comment-content">
+        <span v-html="item.CONTENT"></span>
+        <br />
+      </p>
     </template>
-    <strong>Tutaj możesz dodać coś od siebie...</strong>
+
+    <span class="add-comment">A tutaj możesz dodać coś od siebie...</span>
     <form>
       <label for="author">Nickname</label><br />
       <input type="text" id="author" v-model="name" maxlength="40" /><br />
       <label for="text">Treść</label><br />
       <textarea id="text" v-model="text" maxlength="2000"></textarea><br />
-      <button @click.prevent="sendComment">Wyślij komentarz</button><br />
+      <button @click.prevent="sendComment" class="btn">Wyślij komentarz</button><br />
     </form>
     {{ note }}
   </section>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 section {
-  background-color: lightblue;
-  padding: 5px;
+  font-size: $font-size-base;
+}
+
+.comment-credentials {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  & .date {
+    flex: 1;
+    text-align: right;
+    white-space: nowrap;
+  }
+}
+.comment-content {
+  padding: 20px;
+}
+.add-comment {
+  font-size: $font-size-4;
+  margin-top: 50px;
+}
+form {
+  border: 1px solid $primary-background-color;
+  padding: 15px;
+
+  & legend,
+  label {
+    padding: 0 10px;
+    font-size: $font-size-base;
+  }
+  & input,
+  textarea {
+    padding: 10px;
+    border: 1px solid $secondary-background-color;
+    font-size: $font-size-base;
+    color: $secondary-color;
+    width: 100%;
+    outline: none;
+  }
 }
 </style>

@@ -78,8 +78,8 @@ async function showList() {
         <section class="introArticle flex">
           <h1 v-html="item.TITLE" class="heading--1 u-mt-30 u-mb-30 u-ml-30 u-mr-30"></h1>
           <p class="u-mb-10">
-            <em>Autor: {{ item.LOGIN }}</em>
-            Dodano: {{ item.dateAndTime }} <br />
+            <em>Autor: {{ item.LOGIN }},</em>
+            dodano: {{ item.dateAndTime }} <br />
           </p>
           <img :src="`/uploads/${item.IMAGE_NAME}`" /><br />
           <p class="intro u-mt-10 u-mb-20 u-ml-30 u-mr-30">

@@ -30,57 +30,71 @@ function closeImage() {
 </script>
 <template>
   <section v-if="isGallery">
-    <h2>Galeria</h2>
+    <h3 class="heading--3">Galeria</h3>
     <ul>
       <li v-for="item in gallery" :key="item.IMAGE_ID">
         <img :src="`/uploads/${item.IMAGE_NAME}`" alt="Obrazek" @click="openImage(item)" />
       </li>
     </ul>
-    <div v-if="imgActive">
-      <img :src="`/uploads/${imgPath}`" class="modal" alt="Powiększony obraz" />
-      <span @click="closeImage" class="close">&times;</span>
+    <div v-if="imgActive" class="modal">
+      <img :src="`/uploads/${imgPath}`" alt="Powiększony obraz" />
+      <button @click="closeImage" class="btn btn--small">&times;</button>
     </div>
   </section>
 </template>
 
-<style scoped>
-h2 {
-  color: aliceblue;
-}
-
+<style lang="scss" scoped>
 ul li {
   display: inline;
   margin-inline: 5px;
-}
 
-ul li img {
-  width: 155px;
-  height: auto;
-  border-radius: 10px;
-  padding: 5px;
-}
+  & img {
+    width: 155px;
+    height: auto;
+    border-radius: 10px;
+    padding: 5px;
 
-ul li img:hover {
-  opacity: 0.8;
-  cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+      cursor: pointer;
+    }
+  }
 }
 
 .modal {
-  margin: auto;
-  width: 80%;
-  height: auto;
-  background-color: rgba(0, 0, 0, 0.9);
-}
-.close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
   position: fixed;
-  padding: 10px;
-  top: 10px;
-  right: 10px;
-  font-size: 40px;
-  font-weight: bold;
-  color: whitesmoke;
-  background-color: black;
-  border-radius: 10px;
-  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 100%;
+  height: auto;
+  background-color: $gray-dark;
+
+  & img {
+    // display: flex;
+    // margin: auto;/
+    max-width: 90%;
+    max-height: 90%;
+  }
+
+  & .btn--small {
+    position: fixed;
+    color: $secondary-color;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-1;
+    border-radius: 100%;
+    width: 64px;
+    height: 64px;
+    padding: 0;
+    margin: 0;
+    top: 1%;
+    right: 1%;
+  }
 }
 </style>

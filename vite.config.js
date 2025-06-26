@@ -20,7 +20,6 @@ export default defineConfig({
         @import "@/assets/scss/layout/_header.scss";
         @import "@/assets/scss/layout/_layout.scss";
         @import "@/assets/scss/components/_buttons.scss";
-        @import "@/assets/scss/components/_navigation.scss";
         `
       }
     }
