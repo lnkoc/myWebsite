@@ -46,9 +46,11 @@ function sendComment() {
     <template v-for="item in comments" :key="item.COMMENT_ID">
       <br />
       <p class="comment-credentials">
-        <span class="author">Dodał(a) <strong v-html="item.AUTHOR"></strong></span
+        <span class="author"
+          >Dodał(a)<br />
+          <strong v-html="item.AUTHOR"></strong></span
         ><span class="date"
-          >Data dodania: <em>{{ item.dateAndTime }}</em> </span
+          >Data dodania: <br /><em>{{ item.dateAndTime }}</em> </span
         ><br />
       </p>
       <p class="comment-content">
@@ -57,7 +59,7 @@ function sendComment() {
       </p>
     </template>
 
-    <span class="add-comment">A tutaj możesz dodać coś od siebie...</span>
+    <div class="add-comment">A tutaj możesz dodać coś od siebie...</div>
     <form>
       <label for="author">Nickname</label><br />
       <input type="text" id="author" v-model="name" maxlength="40" /><br />
@@ -72,9 +74,17 @@ function sendComment() {
 <style lang="scss" scoped>
 section {
   font-size: $font-size-base;
+
+  @include small-up {
+    font-size: $font-size-4;
+  }
 }
 
+h3 {
+  margin: 10px 10px;
+}
 .comment-credentials {
+  margin: 0px 10px;
   display: flex;
   justify-content: space-between;
   align-items: stretch;
@@ -88,17 +98,28 @@ section {
   padding: 20px;
 }
 .add-comment {
-  font-size: $font-size-4;
-  margin-top: 50px;
+  font-size: $font-size-5;
+  margin: 20px 10px 10px 10px;
+
+  @include small-up {
+    font-size: $font-size-4;
+  }
+
+  @include medium-up {
+    font-size: $font-size-3;
+  }
 }
 form {
-  border: 1px solid $primary-background-color;
   padding: 15px;
 
   & legend,
   label {
     padding: 0 10px;
     font-size: $font-size-base;
+
+    @include small-up {
+      font-size: $font-size-4;
+    }
   }
   & input,
   textarea {
@@ -108,6 +129,10 @@ form {
     color: $secondary-color;
     width: 100%;
     outline: none;
+
+    @include small-up {
+      font-size: $font-size-4;
+    }
   }
 }
 </style>

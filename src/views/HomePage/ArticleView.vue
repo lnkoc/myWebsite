@@ -1,12 +1,12 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onBeforeMount, onMounted } from 'vue'
 import axios from 'axios'
 import CommentsComponent from '@/components/CommentsComponent.vue'
 import ImagesGallery from '@/components/ImagesGallery.vue'
 
 const props = defineProps(['articleId'])
 const emits = defineEmits('closeArticle')
-const link = ref(null)
+const link = ref()
 const title = ref(null)
 const intro = ref(null)
 const content = ref(null)
@@ -14,6 +14,8 @@ const author = ref(null)
 const created = ref(null)
 // const isGallery = ref(false)
 // const gallery = ref([])
+
+onBeforeMount(() => {})
 
 onMounted(() => {
   axios.post('/get-entire-article', { params: { articleId: props.articleId } }).then((res) => {
@@ -27,6 +29,7 @@ onMounted(() => {
     let date = created.value.slice(0, 10).split('-').reverse().join('/')
     let time = created.value.slice(11, 16)
     created.value = date + ' ' + time
+    window.scrollTo(0, 0)
   })
 })
 function closeArticle() {
@@ -35,20 +38,20 @@ function closeArticle() {
 </script>
 
 <template>
-  <article class="article u-mt-40">
+  <article class="article">
     <section>
-      <img :src="link" alt="Obrazek" class="u-m-auto" /><br />
-      <h1 v-html="title" class="heading--1 u-ml-30 u-mr-30 u-mb-30"></h1>
-      <lablel class="u-ml-50 u-mt-20 u-mb-20">
+      <h1 v-html="title" class="heading heading--1"></h1>
+      <div class="parallax" :style="{ 'background-image': 'url(' + link + ')' }"></div>
+      <p class="credentials">
         Autor: {{ author }}, Dodano: <em>{{ created }}</em>
-      </lablel>
+      </p>
     </section>
-    <section class="intro u-mt-50 u-ml-30 u-mr-30 u-mb-50">
+    <section class="intro">
       <strong v-html="intro"></strong>
     </section>
-    <section v-html="content" class="content u-mt-30 u-ml-30 u-mr-30 u-mb-30"></section>
-    <ImagesGallery :articleId="props.articleId" class="u-mt-50 u-ml-30 u-mr-30 u-mb-50" />
-    <section class="u-mt-50 u-ml-30 u-mr-30 u-mb-50">
+    <section v-html="content" class="content"></section>
+    <ImagesGallery :articleId="props.articleId" class="" />
+    <section class="">
       <CommentsComponent :articleId="props.articleId" />
     </section>
     <button @click="closeArticle" class="btn btn-small">&times;</button>
@@ -59,15 +62,20 @@ function closeArticle() {
 .article {
   background-color: $secondary-color;
   position: relative;
-  padding: 5%;
   z-index: 5;
 
-  & img {
+  & .parallax {
     width: 100%;
+    height: 200px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
-  & h1 {
-    margin-top: -80px;
+  & .heading {
+    // margin: 10px 10px 10px 10px;
+    padding: 10px 10px;
     text-shadow:
       2px 0px 1px $gray-dark,
       0px 2px 1px $gray-dark,
@@ -75,12 +83,25 @@ function closeArticle() {
       0px -2px 1px $gray-dark;
   }
 
+  & .credentials {
+    margin: 20px 10px;
+  }
   & .intro {
-    font-size: $font-size-3;
+    font-size: $font-size-5;
+    margin: 20px 10px;
+
+    @include small-up {
+      font-size: $font-size-4;
+    }
   }
 
   & .content {
-    font-size: $font-size-4;
+    font-size: $font-size-5;
+    margin: 20px 10px;
+
+    @include small-up {
+      font-size: $font-size-4;
+    }
   }
 
   & .btn-small {
@@ -97,8 +118,8 @@ function closeArticle() {
     right: 0;
 
     @include medium-up {
-      top: -30px;
-      right: -30px;
+      top: -10px;
+      right: -10px;
     }
   }
 }

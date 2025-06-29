@@ -29,7 +29,7 @@
 .hamburger {
   cursor: pointer;
   border: none;
-  background-color: transparent;
+  background-color: $secondary-background-color;
   svg,
   path {
     stroke: $primary-color;

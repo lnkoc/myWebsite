@@ -30,7 +30,7 @@ function closeImage() {
 </script>
 <template>
   <section v-if="isGallery">
-    <h3 class="heading--3">Galeria</h3>
+    <h3 class="heading--3">Zdjęcia</h3>
     <ul>
       <li v-for="item in gallery" :key="item.IMAGE_ID">
         <img :src="`/uploads/${item.IMAGE_NAME}`" alt="Obrazek" @click="openImage(item)" />
@@ -44,19 +44,26 @@ function closeImage() {
 </template>
 
 <style lang="scss" scoped>
-ul li {
-  display: inline;
-  margin-inline: 5px;
+h3 {
+  margin: 10px 10px;
+}
 
-  & img {
-    width: 155px;
-    height: auto;
-    border-radius: 10px;
-    padding: 5px;
+ul {
+  display: flex;
+  margin: 5px 10px;
 
-    &:hover {
-      opacity: 0.8;
-      cursor: pointer;
+  & li {
+    margin: 5px 2px;
+
+    & img {
+      width: 140px;
+      height: auto;
+      border-radius: 10px;
+
+      &:hover {
+        opacity: 0.8;
+        cursor: pointer;
+      }
     }
   }
 }

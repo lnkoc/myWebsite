@@ -76,16 +76,13 @@ async function showList() {
     <ul>
       <li v-for="item in introArticlesList" :key="item.ARTICLE_ID" ref="items">
         <section class="introArticle flex">
-          <h1 v-html="item.TITLE" class="heading--1 u-mt-30 u-mb-30 u-ml-30 u-mr-30"></h1>
-          <p class="u-mb-10">
+          <h1 v-html="item.TITLE" class="heading heading--1"></h1>
+          <p class="credentials">
             <em>Autor: {{ item.LOGIN }},</em>
             dodano: {{ item.dateAndTime }} <br />
           </p>
           <img :src="`/uploads/${item.IMAGE_NAME}`" /><br />
-          <p class="intro u-mt-10 u-mb-20 u-ml-30 u-mr-30">
-            <strong v-html="item.INTRO"></strong>
-            <br />
-          </p>
+          <p class="intro" v-html="item.INTRO"></p>
           <button class="btn" @click="openArticle(item.ARTICLE_ID)">Czytaj całość</button><br />
         </section>
       </li>
@@ -100,17 +97,36 @@ async function showList() {
 <style lang="scss" scoped>
 .introArticle {
   background-color: $secondary-color;
-  margin: 40px 40px;
+  margin: 40px 0px;
   border-radius: $border-radius;
   flex-direction: column;
 
+  & .heading {
+    margin: 10px;
+  }
+
+  & .credentials {
+    margin: 10px;
+  }
+
   & .btn {
+    margin: 20px;
     color: $secondary-color;
     font-weight: $font-weight-bold;
   }
 
   & .intro {
-    font-size: $font-size-4;
+    font-size: $font-size-5;
+    margin: 0 10px;
+
+    @include small-up {
+      font-size: $font-size-4;
+      margin: 0 20px;
+    }
+
+    @include medium-up {
+      margin: 0 40px;
+    }
   }
 }
 
@@ -129,11 +145,10 @@ async function showList() {
 }
 
 img {
-  min-width: 384px;
+  max-width: 100%;
   max-height: 560px;
-  // float: left;
 }
-ul {
-  list-style-type: none;
-}
+// ul {
+//   list-style-type: none;
+// }
 </style>

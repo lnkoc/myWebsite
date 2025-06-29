@@ -17,7 +17,6 @@ export default defineConfig({
         @import "@/assets/scss/base/_typography.scss";
         @import "@/assets/scss/base/_reset.scss";
         @import "@/assets/scss/base/_utils.scss";
-        @import "@/assets/scss/layout/_header.scss";
         @import "@/assets/scss/layout/_layout.scss";
         @import "@/assets/scss/components/_buttons.scss";
         `
