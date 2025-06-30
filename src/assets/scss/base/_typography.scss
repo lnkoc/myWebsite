@@ -19,9 +19,15 @@
   }
 
   &--2 {
-    font-size: $font-size-3;
+    font-size: $font-size-base;
 
     @include small-up {
+      font-size: $font-size-4;
+    }
+    @include medium-up {
+      font-size: $font-size-3;
+    }
+    @include large-up {
       font-size: $font-size-2;
     }
   }

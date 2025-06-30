@@ -49,12 +49,26 @@ function closeDemo() {
     </ul>
     <div v-if="demoActive" class="modal">
       <component :is="demoNumber" />
-      <span class="close" @click="closeDemo">&times;</span>
+      <span class="btn close" @click="closeDemo">&times;</span>
     </div>
   </section>
 </template>
 
-<style>
+<style lang="scss" scoped>
+section {
+  margin: 0 10px;
+  padding: 10px 0;
+
+  @include small-up {
+    margin: 0 20px;
+    padding: 20px 0;
+  }
+
+  @include medium-up {
+    margin: 0 40px;
+    padding: 20px 0;
+  }
+}
 ul li {
   display: inline;
   margin-inline: 5px;
@@ -82,11 +96,15 @@ ul li {
 }
 .close {
   position: fixed;
+  font-size: $font-size-1;
+  font-weight: $font-weight-bold;
+  width: 64px;
+  height: 64px;
+  border-radius: 100%;
+  color: $secondary-color;
+  padding: 0;
+  margin: 0;
   top: 10px;
   right: 10px;
-  font-size: 40px;
-  font-weight: bold;
-  color: whitesmoke;
-  cursor: pointer;
 }
 </style>
