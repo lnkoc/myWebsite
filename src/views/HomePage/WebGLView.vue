@@ -21,7 +21,7 @@ import WebGLGAllery from '@/components/WebGLGAllery.vue'
 <style lang="scss" scoped>
 .webgl {
   background-color: $secondary-color;
-  margin: 10px 0px;
+  margin: 20px 0px;
   padding: 10px;
 }
 

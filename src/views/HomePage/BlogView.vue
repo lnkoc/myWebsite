@@ -72,7 +72,7 @@ async function showList() {
 </script>
 
 <template>
-  <main v-if="!showArticle">
+  <div v-if="!showArticle">
     <ul>
       <li v-for="item in introArticlesList" :key="item.ARTICLE_ID" ref="items">
         <section class="introArticle flex">
@@ -90,14 +90,14 @@ async function showList() {
     <button :disabled="articlesLoaderBtn" class="btn btn-loader" @click="getMoreIntroArticles(3)">
       {{ articlesLoaderNote }}
     </button>
-  </main>
+  </div>
   <ArticleView v-if="showArticle" :articleId="openArticleId" @closeArticle="showList()" />
 </template>
 
 <style lang="scss" scoped>
 .introArticle {
   background-color: $secondary-color;
-  margin: 40px 0px;
+  margin: 20px 0px;
   border-radius: $border-radius;
   flex-direction: column;
 
@@ -148,7 +148,4 @@ img {
   max-width: 100%;
   max-height: 560px;
 }
-// ul {
-//   list-style-type: none;
-// }
 </style>

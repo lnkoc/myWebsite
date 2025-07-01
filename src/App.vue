@@ -12,7 +12,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: $font-size-base;
   color: $primary-color;
-  height: 100%;
+  min-height: 100vh;
   position: relative;
   overflow-x: hidden;
   overflow-y: scroll;

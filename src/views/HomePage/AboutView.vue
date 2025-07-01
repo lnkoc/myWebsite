@@ -38,7 +38,7 @@
 <style lang="scss" scoped>
 .about {
   background-color: $secondary-color;
-  margin: 10px 0px;
+  margin: 20px 0px;
   padding: 10px;
 }
 
