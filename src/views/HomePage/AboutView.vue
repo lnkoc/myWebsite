@@ -2,10 +2,9 @@
   <section class="about">
     <h1 class="heading heading--1">O</h1>
     <p>
-      Ta strona jest o autorze niewielkiej, nieskomplikowanej witryny, którą próbuje rozwijać.
-      Teksty zamieszczone na niej mogą być traktowane jako zapełniacze miejsca. Jest to wersja
-      niefinalna. Czy projekt ten zostanie napisany do wersji 1.0.0 i ujrzy światło dzienne? Czas
-      pokaże...
+      Ta strona i mikroblog jest o autorze niewielkiej, nieskomplikowanej witryny, który ją rozwija.
+      Teksty zamieszczone na niej mogą być traktowane jako lorem ipsum. Jest to wersja niefinalna,
+      obecnie zwana betą. Czy projekt ten zostanie releasem i ujrzy światło dzienne? Zobaczymy!
     </p>
     <p>
       Od czasów dzieciństwa, czyli od lat '90-tych mam styczność z szerokorozumianą informatyką.
@@ -20,7 +19,7 @@
       Jak czas pokazał, na następny komputer musiałem poczekać dobrych kilka lat. Aczkolwiek, kiedy
       go zobaczyłem, wydawał mi się wyjątkowy. Dzisiaj wiem, że taki był. Klasyczny x86, ale nie ze
       stajni znanych obecnie czerwonych, ani niebieskich. Dzisiaj zapewne niewiele osób pamięta tego
-      producenta...
+      producenta.
     </p>
     <p>
       Końcem lat dziewięćdziesiątych miałem przyjemność przyjeć się światu linuksa od strony

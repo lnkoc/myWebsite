@@ -509,13 +509,53 @@ function wait(time) {
 </script>
 
 <template>
-  <h1>Zaloguj się!</h1>
-  <form>
-    <label for="user">Użytkownik</label><br />
-    <input type="text" id="user" v-model="loginData.nickName" /><br />
-    <label for="password">Hasło</label><br />
-    <input type="password" id="password" v-model="loginData.pass" /><br />
-    <button @click.prevent="login">Zaloguj</button>
+  <form class="loginForm">
+    <fieldset>
+      <legend>Zaloguj się!</legend>
+      <label for="user">Użytkownik</label><br />
+      <input type="text" id="user" v-model="loginData.nickName" /><br />
+      <label for="password">Hasło</label><br />
+      <input type="password" id="password" v-model="loginData.pass" /><br />
+      <button class="btn btn--small" @click.prevent="login">Zaloguj</button>
+    </fieldset>
+    <div class="hint">
+      {{ note }}
+    </div>
   </form>
-  {{ note }}
 </template>
+
+<style lang="scss" scoped>
+.hint {
+  text-align: center;
+}
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  & fieldset {
+    border: 1px solid $tertiary-color;
+    padding: 20px;
+  }
+
+  & legend {
+    font-size: $font-size-3;
+  }
+
+  & label {
+    font-size: $font-size-4;
+  }
+
+  & input {
+    padding: 10px;
+    border: 1px solid $tertiary-color;
+    outline: none;
+  }
+
+  & .btn--small {
+    width: 100%;
+  }
+}
+</style>

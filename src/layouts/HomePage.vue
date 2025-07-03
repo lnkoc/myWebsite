@@ -115,9 +115,7 @@ function setActive(element) {
     <main class="main">
       <RouterView :key="refreshKey" />
     </main>
-    <footer class="footer">
-      To jest wersja beta, czyli ta strona znajduje się w budowie, więc może się zmienić...
-    </footer>
+    <footer class="footer">Wersja beta 3. Ta strona znajduje się w budowie.</footer>
   </div>
 </template>
 
@@ -193,7 +191,7 @@ function setActive(element) {
     width: 40px;
     float: right;
     display: none;
-    z-index: 2;
+    // z-index: 2;
 
     & svg {
       float: right;

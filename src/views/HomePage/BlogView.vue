@@ -103,6 +103,14 @@ async function showList() {
 
   & .heading {
     margin: 10px;
+
+    @include small-up {
+      margin: 20px;
+    }
+
+    @include medium-up {
+      margin: 30px;
+    }
   }
 
   & .credentials {

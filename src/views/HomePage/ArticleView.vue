@@ -62,6 +62,7 @@ function closeArticle() {
 .article {
   background-color: $secondary-color;
   position: relative;
+  margin-top: 48px;
   z-index: 5;
 
   & .parallax {
@@ -118,7 +119,7 @@ function closeArticle() {
     right: 0;
 
     @include medium-up {
-      top: -10px;
+      top: -48px;
       right: -10px;
     }
   }
