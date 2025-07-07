@@ -4,7 +4,8 @@
     <p>
       Ta strona i mikroblog jest o autorze niewielkiej, nieskomplikowanej witryny, który ją rozwija.
       Teksty zamieszczone na niej mogą być traktowane jako lorem ipsum. Jest to wersja niefinalna,
-      obecnie zwana betą. Czy projekt ten zostanie releasem i ujrzy światło dzienne? Zobaczymy!
+      obecnie zwana RC1. Czy projekt ten zostanie finalnym releasem i ujrzy światło dzienne?
+      Zobaczymy!
     </p>
     <p>
       Od czasów dzieciństwa, czyli od lat '90-tych mam styczność z szerokorozumianą informatyką.

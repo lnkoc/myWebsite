@@ -115,7 +115,7 @@ function setActive(element) {
     <main class="main">
       <RouterView :key="refreshKey" />
     </main>
-    <footer class="footer">Wersja beta 3. Ta strona znajduje się w budowie.</footer>
+    <footer class="footer">Projekt i wykonanie lnkoc. Wersja RC1.</footer>
   </div>
 </template>
 
