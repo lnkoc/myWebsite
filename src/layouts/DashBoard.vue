@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
 import { useSessionStore } from '@/stores/session'
-// import vue from 'eslint-plugin-vue'
 
 const router = useRouter()
 const session = useSessionStore()
@@ -163,7 +162,7 @@ function logout() {
 
   @include medium-up {
     background-color: $secondary-color;
-    height: 80px;
+    height: 120px;
     margin-bottom: 10px;
   }
 }
@@ -264,6 +263,7 @@ function logout() {
     & ul {
       display: flex;
       margin: 0;
+      align-items: center;
 
       & li {
         padding: 30px;

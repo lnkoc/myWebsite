@@ -12,8 +12,6 @@ const intro = ref(null)
 const content = ref(null)
 const author = ref(null)
 const created = ref(null)
-// const isGallery = ref(false)
-// const gallery = ref([])
 
 onBeforeMount(() => {})
 
@@ -75,7 +73,6 @@ function closeArticle() {
   }
 
   & .heading {
-    // margin: 10px 10px 10px 10px;
     padding: 10px 10px;
     text-shadow:
       2px 0px 1px $gray-dark,
@@ -115,11 +112,10 @@ function closeArticle() {
     height: 64px;
     padding: 0;
     margin: 0;
-    top: 0;
+    top: -48px;
     right: 0;
 
-    @include medium-up {
-      top: -48px;
+    @include small-up {
       right: -10px;
     }
   }

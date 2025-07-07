@@ -51,6 +51,7 @@ h3 {
 ul {
   display: flex;
   margin: 5px 10px;
+  flex-wrap: wrap;
 
   & li {
     margin: 5px 2px;

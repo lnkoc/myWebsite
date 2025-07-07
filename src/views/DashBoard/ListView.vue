@@ -89,23 +89,24 @@ async function showList() {
 </script>
 
 <template>
-  <main v-if="!edit">
-    <h2>Lista wpisów</h2>
+  <div class="list" v-if="!edit">
+    <h2 class="heading heading--2">Lista wpisów</h2>
     <ul>
       <li v-for="item in introArticlesList" :key="item.ARTICLE_ID" ref="items">
-        <h3 v-html="item.TITLE"></h3>
-        <em>{{ item.LOGIN }}</em
-        ><br />
-        Opublikowano: {{ item.dateAndTime }}<br />
+        <h3 class="heading heading--3" v-html="item.TITLE"></h3>
+        <p class="credentials">
+          <span class="info">Autor:</span> <em>{{ item.LOGIN }}</em
+          >, <span class="info">dodano: </span> {{ item.dateAndTime }}<br />
+        </p>
         <img :src="`/uploads/${item.IMAGE_NAME}`" /><br />
-        <strong v-html="item.INTRO"></strong><br />
-        <button @click="editArticle(item.ARTICLE_ID)">Edytuj całość</button><br />
+        <p class="intro" v-html="item.INTRO"></p>
+        <button class="btn" @click="editArticle(item.ARTICLE_ID)">Edytuj całość</button><br />
       </li>
     </ul>
-    <button :disabled="articlesLoaderBtn" @click="getMoreIntroArticles(10)">
+    <button class="btn-loader" :disabled="articlesLoaderBtn" @click="getMoreIntroArticles(10)">
       {{ articlesLoaderNote }}
     </button>
-  </main>
+  </div>
   <EditArticle
     v-if="edit"
     :articleId="editArticleId"
@@ -114,9 +115,98 @@ async function showList() {
   />
 </template>
 
-<style scoped>
-img {
-  width: 384px;
-  max-height: 216px;
+<style lang="scss" scoped>
+.list {
+  background-color: $secondary-color;
+  margin: 10px 0;
+  padding: 10px;
+
+  @include small-up {
+    padding: 20px;
+  }
+
+  @include medium-up {
+    padding: 30px;
+  }
+}
+
+.heading {
+  margin: 10px;
+
+  @include small-up {
+    margin: 20px;
+  }
+
+  @include medium-up {
+    margin: 30px;
+  }
+}
+
+ul li {
+  background-color: $secondary-background-color;
+  margin: 10px;
+  border-radius: $border-radius;
+
+  & .heading {
+    padding: 10px;
+
+    @include small-up {
+      padding: 20px;
+    }
+
+    @include medium-up {
+      padding: 30px;
+    }
+  }
+
+  & p {
+    text-align: center;
+  }
+  & .info {
+    color: $tertiary-color;
+  }
+
+  & img {
+    max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  & .intro {
+    margin: 10px;
+    padding: 10px;
+    font-size: $font-size-base;
+
+    @include small-up {
+      font-size: $font-size-4;
+      padding: 20px;
+    }
+  }
+
+  & .btn {
+    display: block;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.credentials {
+  font-size: $font-size-4;
+  padding: 10px;
+}
+
+.btn-loader {
+  @extend .btn;
+  display: block;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+
+  &:disabled {
+    background-color: $secondary-color;
+    color: $primary-color;
+  }
 }
 </style>

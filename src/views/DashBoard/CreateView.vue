@@ -116,62 +116,146 @@ function saveArticleAndGallery() {
 </script>
 
 <template>
-  <h2>Utwórz artykuł</h2>
+  <div class="create">
+    <h2 class="heading heading--2">Utwórz artykuł/szkic</h2>
 
-  <form>
-    <label for="hidden"
-      ><input type="radio" id="hidden" v-model="article.hidden" :value="1" />Szkic</label
-    >
-    <label for="visible"
-      ><input type="radio" id="visible" v-model="article.hidden" :value="0" />Artykuł</label
-    >
-    <br />
+    <form>
+      <label for="hidden"
+        ><input class="radio" type="radio" id="hidden" v-model="article.hidden" :value="1" /> Szkic
+      </label>
 
-    <label for="createTime"
-      >Czas dodania:
-      <input type="datetime-local" id="createTime" v-model="article.createTime" /></label
-    ><br />
+      <label for="visible"
+        ><input class="radio" type="radio" id="visible" v-model="article.hidden" :value="0" />
+        Artykuł</label
+      >
+      <br /><br />
 
-    <label for="title">Tytuł</label><br />
-    <input type="text" v-model="article.title" maxlength="300" id="title" required /><br />
+      <label for="createTime"
+        >Czas dodania:<br />
+        <input
+          class="wide"
+          type="datetime-local"
+          id="createTime"
+          v-model="article.createTime" /></label
+      ><br />
 
-    <label for="intro">Wstęp</label><br />
-    <textarea id="intro" v-model="article.intro" rows="5" maxlength="1000" requied></textarea><br />
+      <label for="title">Tytuł</label><br />
+      <input
+        class="wide"
+        type="text"
+        v-model="article.title"
+        maxlength="300"
+        id="title"
+        required
+      /><br />
 
-    <label for="content">Treść</label><br />
-    <textarea id="content" v-model="article.content" rows="15" maxlength="65535" requied></textarea
-    ><br />
+      <label for="intro">Wstęp</label><br />
+      <textarea
+        class="wide"
+        id="intro"
+        v-model="article.intro"
+        rows="5"
+        maxlength="1000"
+        requied
+      ></textarea
+      ><br />
 
-    <label for="hero">Obraz główny</label><br />
-    <img v-if="!showHG && pathHeroImg != null" :src="`/uploads/${pathHeroImg}`" id="hero" /><br />
-    <button @click.prevent="toggleHeroGallery()">Wybierz obraz</button><br />
-    <ChooseHeroImage v-if="showHG" @actualImg="setHeroImage" /><br />
+      <label for="content">Treść</label><br />
+      <textarea
+        class="wide"
+        id="content"
+        v-model="article.content"
+        rows="15"
+        maxlength="65535"
+        requied
+      ></textarea
+      ><br />
 
-    <label for="articleGallery">Wybierz obrazy do galerii</label>
-    <ul id="articleGallery">
-      <template v-for="item in articleGallery" :key="item.IMAGE_ID">
-        <li>
-          <img :src="`/uploads/${item.name}`" @click="removeImg(item)" />
-        </li>
-      </template>
-    </ul>
-    <button @click.prevent="toggleIG">{{ descIG }}</button>
-    <ChooseImagesToGallery v-if="showIG" @add="addImageToGallery" /><br /><br />
+      <label for="hero">Obraz główny</label><br />
+      <img v-if="!showHG && pathHeroImg != null" :src="`/uploads/${pathHeroImg}`" id="hero" /><br />
+      <button class="btn" @click.prevent="toggleHeroGallery()">Wybierz obraz</button><br />
+      <ChooseHeroImage v-if="showHG" @actualImg="setHeroImage" /><br />
 
-    <button @click.prevent="saveArticleAndGallery()">Opublikuj</button>
-  </form>
-  {{ comment }}<br />
+      <label for="articleGallery">Wybierz obrazy do galerii</label>
+      <ul id="articleGallery">
+        <template v-for="item in articleGallery" :key="item.IMAGE_ID">
+          <li>
+            <img :src="`/uploads/${item.name}`" @click="removeImg(item)" />
+          </li>
+        </template>
+      </ul>
+      <button class="btn" @click.prevent="toggleIG">{{ descIG }}</button>
+      <ChooseImagesToGallery v-if="showIG" @add="addImageToGallery" /><br /><br />
+
+      <button class="btn" @click.prevent="saveArticleAndGallery()">Opublikuj</button>
+    </form>
+    {{ comment }}<br />
+  </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+.create {
+  background-color: $secondary-color;
+  margin: 10px 0;
+  padding: 10px;
+
+  @include small-up {
+    padding: 20px;
+  }
+
+  @include medium-up {
+    padding: 30px;
+  }
+}
+
+.heading,
+form {
+  margin: 10px;
+
+  @include small-up {
+    margin: 20px;
+  }
+
+  @include medium-up {
+    margin: 30px;
+  }
+}
+
+form {
+  padding: 15px;
+
+  & label {
+    padding: 0 10px;
+    font-size: $font-size-base;
+
+    @include small-up {
+      font-size: $font-size-4;
+    }
+  }
+  & input,
+  textarea {
+    padding: 10px;
+    border: 1px solid $secondary-background-color;
+    font-size: $font-size-base;
+    color: $secondary-color;
+    outline: none;
+    resize: none;
+
+    &.wide {
+      width: 100%;
+    }
+
+    @include small-up {
+      font-size: $font-size-4;
+    }
+  }
+}
+
 ul li {
   display: inline;
 }
 img {
-  width: 192px;
-  max-height: 108px;
-}
-h3 {
-  color: red;
+  max-width: 192px;
+  height: auto;
 }
 </style>
